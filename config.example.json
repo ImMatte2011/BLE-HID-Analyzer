@@ -1,0 +1,12 @@
+{
+  "auto_scan": true,
+  "target_mac": "",
+  "device_name": "",
+  "verbose": "NORMAL",
+  "save_reports": true,
+  "reports_directory": "reports",
+  "overwrite_last_report": true,
+  "scan_timeout": 5,
+  "connect_timeout": 20,
+  "create_config_if_missing": false
+}
