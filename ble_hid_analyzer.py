@@ -581,17 +581,7 @@ class BLEHIDAnalyzer:
     _IRQ_GATTC_NOTIFY = 18
 
     def __init__(self, target_mac=None, config=None):
-        self.config = config or ConfigManager().load()
-        self.target_mac = target_mac or self.config.get("target_mac") or ""
-        self.logger = ConsoleLogger(self.config.get("verbose", "NORMAL"))
-        self.known_devices = KnownDevicesStore()
-        self.report = DiagnosticsReport(self.config)
-        self.report_writer = ReportWriter(self.config)
-        self.parser = HIDReportParser()
-
         self.ble = ubluetooth.BLE()
-        self.ble.active(True)
-        self.ble.irq(self._irq)
 
         self._conn = None
         self._phase = "idle"
@@ -610,6 +600,31 @@ class BLEHIDAnalyzer:
         self._ref_read_pending = None
         self._handle_label = {}
         self._handle_category = {}
+
+        self.ble.irq(self._irq)
+
+        if not self.ble.active():
+            for attempt in range(3):
+                try:
+                    self.ble.active(True)
+                    break
+                except OSError:
+                    self.ble.active(False)
+                    import time
+                    time.sleep_ms(500)
+            else:
+                raise RuntimeError(
+                    "Unable to initialize BLE controller. "
+                    "If this persists, power-cycle the ESP32."
+                )
+
+        self.config = config or ConfigManager().load()
+        self.target_mac = target_mac or self.config.get("target_mac") or ""
+        self.logger = ConsoleLogger(self.config.get("verbose", "NORMAL"))
+        self.known_devices = KnownDevicesStore()
+        self.report = DiagnosticsReport(self.config)
+        self.report_writer = ReportWriter(self.config)
+        self.parser = HIDReportParser()
 
     def start(self):
         """Start analysis by target MAC or by BLE scan selection."""

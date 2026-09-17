@@ -1,0 +1,92 @@
+# BLE HID Analyzer - TODO
+
+## HID Usage Tables
+
+- [ ] USB HID Keyboard Usage Table completa
+- [ ] USB HID Consumer Usage Table completa
+- [ ] USB HID Generic Desktop Usage Table
+- [ ] USB HID System Control Usage Table
+- [ ] USB HID LED Output Usage Table
+- [ ] USB HID Usage Pages lookup
+- [ ] USB HID Modifier lookup
+
+---
+
+## HID Report Parsing
+
+- [ ] Report Descriptor (0x2A4B) parser  -  HIGH PRIORITY
+- [ ] Report ID auto-discovery
+- [ ] Automatic report type detection (no hardcoded IDs)
+- [ ] Boot Keyboard report parser
+- [ ] Boot Mouse report parser
+- [ ] NKRO Keyboard parser
+- [ ] Consumer Control parser improvements
+- [ ] Vendor Specific report decoder
+- [ ] Unknown report analyzer
+
+---
+
+## HID Device Support
+
+- [ ] Keyboard
+- [ ] Mouse
+- [ ] Consumer Control
+- [ ] System Control
+- [ ] Gamepad
+- [ ] Joystick
+- [ ] Multi-axis Controller
+- [ ] Digitizer
+- [ ] Touchpad / Touchscreen (where possible)
+- [ ] Dial / Knob
+- [ ] Wheel
+- [ ] Slider
+
+---
+
+## HID BLE Characteristics
+
+- [ ] HID Information (0x2A4A)
+- [ ] Report Map (0x2A4B)
+- [ ] HID Control Point (0x2A4C)
+- [ ] Protocol Mode (0x2A4E)
+- [ ] Boot Keyboard Input Report
+- [ ] Boot Keyboard Output Report
+- [ ] Boot Mouse Input Report
+
+---
+
+## BLE Services
+
+- [ ] Battery Service (0x180F)
+- [ ] Battery Level (0x2A19)
+- [ ] Device Information Service (0x180A)
+- [ ] Manufacturer Name
+- [ ] Model Number
+- [ ] Serial Number
+- [ ] Firmware Revision
+- [ ] Hardware Revision
+- [ ] Software Revision
+
+---
+
+## Diagnostics
+
+- [ ] Better Vendor Specific report logging
+- [ ] Better RAW packet visualization
+- [ ] Report statistics by Report ID
+- [ ] Report timing statistics
+- [ ] Export parsed Report Descriptor to JSON
+- [ ] Export Report Map to file
+- [ ] Automatic device capability summary
+
+---
+
+## Nice to have
+
+- [ ] Save discovered HID descriptor for offline analysis
+- [ ] Decode Report Descriptor into human-readable format
+- [ ] Device capability tree
+- [ ] HID Usage lookup helper
+- [ ] Vendor Usage Page lookup
+- [ ] Live event filtering
+- [ ] Colorized terminal output (CPython only)
